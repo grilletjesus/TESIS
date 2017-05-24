@@ -1,0 +1,206 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019-01A strtok.save
+01B-01E _Randseed
+01F     rs232_errors
+020-023 UPPER_TICKS_1
+024     CSMA_LIMIT
+025     PAYLOADLEN
+026-027 rssi
+028     _mode
+029     _address
+02A.0   _isRFM69HW
+02B     _powerLevel
+02C-0AB GPSData
+0AC     GPSDataPtr
+0AD     c
+0AE     GPSDataReady
+0AF     GPSmsgCount
+0B0-0EC TX_DATA
+0ED-0EE @sprintf_string
+0EF     send.toAddress
+0EF     initialize.nodeID
+0EF     GPS_Pack.i
+0EF     main.@SCRATCH1
+0EF     @PSTRINGR_1038.@SCRATCH1
+0F0-0F3 initialize.start
+0F0     @delay_ms1.P1
+0F0-0F1 send.buffer
+0F0     GPS_Pack.@SCRATCH1
+0F0     @PSTRINGR_1038.@SCRATCH2
+0F1     @SPRINTF.P1
+0F1     GPS_Pack.@SCRATCH2
+0F2     send.bufferSize
+0F2     GPS_Pack.@SCRATCH3
+0F3     send.requestACK
+0F4     initialize.timeout
+0F4-0F7 send.now
+0F5     initialize.i
+0F6     initialize.@SCRATCH1
+0F7     setHighPower.onOff
+0F7     initialize.@SCRATCH2
+0F8     readRSSI.forceTrigger
+0F8     sendFrame.toAddress
+0F8     initialize.@SCRATCH3
+0F8     canSend.@SCRATCH1
+0F8     send.@SCRATCH1
+0F8     setHighPower.@SCRATCH1
+0F9-0FA sendFrame.buffer
+0F9-0FA readRSSI.rssi
+0F9     initialize.@SCRATCH4
+0F9     canSend.@SCRATCH2
+0F9     send.@SCRATCH2
+0FA     initialize.@SCRATCH5
+0FA     send.@SCRATCH3
+0FB     sendFrame.bufferSize
+0FB     send.@SCRATCH4
+0FB     readRSSI.@SCRATCH1
+0FC     sendFrame.requestACK
+0FD     sendFrame.sendACK
+0FE     sendFrame.CTLbyte
+0FF     sendFrame.i
+100-103 sendFrame.txStart
+104     setMode.newMode
+104     sendFrame.@SCRATCH1
+105     readReg.addr
+105     setHighPowerRegs.onOff
+105     setMode.@SCRATCH1
+105     sendFrame.@SCRATCH2
+106     readReg.regval
+106     sendFrame.@SCRATCH3
+106     setHighPowerRegs.@SCRATCH1
+107     writeReg.addr
+107     SPIRead8bit.RdPara
+107     sendFrame.@SCRATCH4
+107     readReg.@SCRATCH1
+108     SPIRead8bit.bitcnt
+108     writeReg.value
+108     sendFrame.@SCRATCH5
+109     writeReg.@SCRATCH1
+10A     SPItransfer.WrPara
+10B     SPItransfer.Data_In
+10C     SPItransfer.bitcnt
+10D-10E StrFnd.s
+10D     RDA_isr.@SCRATCH1
+10E     RDA_isr.@SCRATCH2
+10F     StrFnd.c
+110-111 StrFnd.st
+112     StrFnd.l
+113     StrFnd.@SCRATCH1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  millis
+0000BA  CONFIG.call
+0000CA  CONFIG.data
+0000FA  @TIMERISR_1
+000110  @GETCH_BIU_1
+000128  StrFnd
+000174  RDA_isr
+0001EA  @GET_TICKS_1
+00022A  select
+000230  SPItransfer
+000278  unselect
+00027E  writeReg
+000298  SPIRead8bit
+0002D2  readReg
+0002F4  setHighPower
+000352  setHighPowerRegs
+000388  setMode
+000492  initialize
+00065C  @delay_ms1
+000682  GPS_Pack
+0006C2  @SPRINTF
+0006E0  @PSTRINGR_1038
+000706  readRSSI
+000752  canSend
+00078C  sendFrame
+0008B6  send
+000944  @cinit1
+000944  main
+0009AC  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\Jesus\Desktop\TESIS\Funciona\Transmisor + gps\
+
+Project Files:
+    rmf69.c                                                 [13-may.-17 15:29  CRC=DBC8D5C0]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h [18-may.-16 15:14  CRC=7C29061C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h [27-mar.-16 19:10  CRC=59769663]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h [05-sept.-14 12:47  CRC=897CEC6C]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
+    GPS.c                                                   [09-oct.-16 20:44  CRC=CA1070FB]
+    RFM69.h                                                 [12-may.-17 14:45  CRC=434F846C]
+    RFM69registers.h                                        [27-abr.-17 14:42  CRC=7ED51585]
+
+Source signature=378FC352
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=1594
+
+Units:
+    rmf69 (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   rmf69.xsym
+    Errors:      rmf69.err
+    Ext Symbols: rmf69.esym
+    INHX32:      rmf69.hex
+    Symbols:     rmf69.sym
+    List:        rmf69.lst
+    Debug/COFF:  rmf69.cof
+    Project:     rmf69.ccspjt
+    Call Tree:   rmf69.tre
+    Statistics:  rmf69.STA

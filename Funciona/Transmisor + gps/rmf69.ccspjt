@@ -1,0 +1,99 @@
+[PROJECT]
+Target=rmf69.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.059
+Compiler=PCH
+[Target Data]
+FileList=rmf69.c
+[rmf69.c]
+Type=4
+[mru-list]
+1=rmf69.c
+
+[defines]
+buildcount=58
+
+[Opened Files]
+1=rmf69.c
+t1=45
+2=GPS.c
+t2=37
+Count=3
+3=RFM69.h
+t3=77
+4=..\..\..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h
+t4=5
+
+[ProjectLog]
+Days=4
+D1=12-05-2017
+D1_L=51
+D1_L1=[53456]Stopped Editing.
+D1_L2=[54587]Started Editing.
+D1_L3=[54892]Stopped Editing.
+D1_L4=[56551]Started Editing.
+D1_L5=[58415]Stopped Editing.
+D1_L6=[59404]Started Editing.
+D1_L7=[59762]Stopped Editing.
+D1_L8=[60167]Started Editing.
+D1_L9=[60481]Stopped Editing.
+D1_L10=[66531]Started Editing.
+D1_L11=[66839]Stopped Editing.
+D1_L12=[66919]Started Editing.
+D1_L13=[67249]Stopped Editing.
+D1_L14=[67780]Started Editing.
+D1_L15=[68086]Stopped Editing.
+D1_L16=[68191]Started Editing.
+D1_L17=[68605]Stopped Editing.
+D1_L18=[68871]Started Editing.
+D1_L19=[69238]Stopped Editing.
+D1_L20=[69334]Started Editing.
+D1_L21=[69643]Stopped Editing.
+D1_L22=[69663]Started Editing.
+D1_L23=[69963]Stopped Editing.
+D1_L24=[70088]Started Editing.
+D1_L25=[71567]Stopped Editing.
+D1_L26=[71614]Started Editing.
+D1_L27=[71915]Stopped Editing.
+D1_L28=[72079]Started Editing.
+D1_L29=[72651]Stopped Editing.
+D1_L30=[72836]Started Editing.
+D1_L31=[74570]Stopped Editing.
+D1_L32=[75248]Started Editing.
+D1_L33=[75693]Stopped Editing.
+D1_L34=[76189]Started Editing.
+D1_L35=[77324]Stopped Editing.
+D1_L36=[77573]Started Editing.
+D1_L37=[77878]Stopped Editing.
+D1_L38=[78363]Started Editing.
+D1_L39=[78966]Stopped Editing.
+D1_L40=[79096]Started Editing.
+D1_L41=[79400]Stopped Editing.
+D1_L42=[79564]Started Editing.
+D1_L43=[80066]Stopped Editing.
+D1_L44=[80117]Started Editing.
+D1_L45=[80417]Stopped Editing.
+D1_L46=[80479]Started Editing.
+D1_L47=[81161]Stopped Editing.
+D1_L48=[81227]Started Editing.
+D1_L49=[83028]Stopped Editing.
+D1_L50=[84196]Started Editing.
+D1_L51=[85390]Stopped Editing.
+D2=13-05-2017
+D2_L=2
+D2_L1=[55130]Started Editing.
+D2_L2=[56080]Stopped Editing.
+TotalEdit=183
+TotalDebug=0
+D3=14-05-2017
+D3_E=183
+D3_D=0
+D3_L=1
+D3_L1=[58522]Project Closed.
+D4=20-05-2017
+D4_L=2
+D4_L1=[68839]Project Opened.
+D4_L2=[69031]Project Closed.
+[Units]
+Count=1
+1=rmf69 (main)
