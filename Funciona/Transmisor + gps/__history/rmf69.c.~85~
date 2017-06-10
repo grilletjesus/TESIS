@@ -41,32 +41,13 @@ byte TX_DATA[61];
 //--------------------------------------
 //Funciones
 
+
 void GPS_Pack()
 {
    for(int i=0; i<61; i++)
    {
       GPSData[i]=GPSData[i+7];
    }
-}
-
-
-#define INTS_PER_SECOND 1//0       // 10 = 21sec; 
-
-int8 seconds;      // A running seconds counter
-int8 int_count;    // Number of interrupts left before a second has elapsed
-
-
-#INT_TIMER2                        // This function is called every time
-void clock_isr() {                 // timer 2 overflows (250->0), which is
-                                   // approximately 125 times per second for
-    if(--int_count==0) {           // this program.
-      if(++seconds==21)
-      {
-         seconds = 0;
-         Output_high(GPSPower);
-      }
-      int_count = INTS_PER_SECOND;
-    }
 }
 
 //------------------------
@@ -127,12 +108,6 @@ set_tris_D(0b00010000);
  
 //1seg ~> cont = 12; 1min ~> cont = 700 
 //------------------------------------------------------------ 
-   int_count = INTS_PER_SECOND;
-   setup_timer_2(T2_DIV_BY_16, 250, 10);
-   set_timer2(0);
-   enable_interrupts(INT_TIMER2);
-   int_count = INTS_PER_SECOND;
-   
    cn = 0;
    Output_high(GPSPower);
    ext_int_edge(2,L_TO_H);
@@ -144,10 +119,7 @@ set_tris_D(0b00010000);
 // --------------------------------------------------------------
 while(true)
    {
-      for(int i=0;i<61;i++)
-      {
-         sprintf(TX_DATA,"\0");
-      }
+      sprintf(TX_DATA,"\0");
       while(cn == 0){
       if (GPSDataReady)
       { 
@@ -164,14 +136,14 @@ while(true)
             
          //}
          Output_low(GPSPower);
-         //delay_ms(20000);
-         //Output_high(GPSPower);
+         delay_ms(20000);
+         Output_high(GPSPower);
          GPSDataReady = FALSE; 
       }  
        
       }
    
-       sprintf(TX_DATA, "ERROR,desconectado");
+      sprintf(TX_DATA, "ERROR,desconectado");
        send(0x01, TX_DATA, 61, 0);
        delay_ms(100);
        if (input(PIN_B1) == 1)

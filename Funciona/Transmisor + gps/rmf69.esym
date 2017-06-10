@@ -1,10 +1,10 @@
-F N "H" 7 74 ""
-D G "__PCH__" 7 98 ""5.059""
-D G "__DEVICE__" 7 98 "4550"
-D G "__DATE__" 7 98 ""13-may.-17""
-D G "__TIME__" 7 98 ""15:29:49""
-D G "_UNICODE" 7 98 ""?""
-D G "__EVAL" 7 98 ""?"" "Standard Header file for the PIC18F4550 device ////////////////"
+F N "Program" 7 74 ""
+D G "__PCH__" 7 74 ""5.059""
+D G "__DEVICE__" 7 74 "4550"
+D G "__DATE__" 7 74 ""05-jun.-17""
+D G "__TIME__" 7 74 ""16:23:49""
+D G "_UNICODE" 7 74 ""?""
+D G "__EVAL" 7 74 ""?"" "Standard Header file for the PIC18F4550 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 f N "set_tris_a" 1 45 ""
 v L "value" 1 45 "int8" `54 
@@ -2678,7 +2678,9 @@ C L "initialize" 7 4 2 "FUNCTION"
 C L "initialize" 7 4 1 "FUNCTION"
 C L "initialize" 7 4 1 "FUNCTION"
 C L "initialize" 7 4 1 "FUNCTION"
-C L "initialize" 7 4 9 "FUNCTION"
+C L "initialize" 7 4 6 "FUNCTION"
+C L "initialize" 7 4 1 "FUNCTION"
+C L "initialize" 7 4 3 "FUNCTION"
 C L "initialize" 7 4 3 "FUNCTION"
 C L "initialize" 7 4 2 "FUNCTION"
 C L "initialize" 7 4 2 "FUNCTION"
@@ -2795,26 +2797,37 @@ F G "setHighPowerRegs" 7 392 "void(int8 onOff)" `1001
 V G "GPSData" 0 27 "int8[128]" `1024 
 V G "GPSDataPtr" 0 28 "int8" `1025 
 V G "c" 0 29 "int8" `1026 
-V G "GPSDataReady" 0 30 "int8" `1027 
-V G "GPSmsgCount" 0 31 "int8" `1028 
-V G "TX_DATA" 0 33 "int8[61]" `1029  "AUX---"
+V G "cont" 0 30 "int8" `1027 
+V G "cn" 0 31 "int8" `1028 
+V G "GPSDataReady" 0 32 "int8" `1029 
+V G "GPSmsgCount" 0 33 "int8" `1030 
+V G "TX_DATA" 0 35 "int8[61]" `1031  "AUX---"
 C L "GPS_Pack" 0 25 4 "FUNCTION"
 F N "GPS_Pack" 0 44 ""
-F G "GPS_Pack" 0 45 "void()" `1030 
-V L "i" 0 46 "int8" `1031 
+F G "GPS_Pack" 0 45 "void()" `1032 
+V L "i" 0 46 "int8" `1033 
+D G "INTS_PER_SECOND" 0 53 "1" "0       // 10 = 21sec;"
+V G "seconds" 0 55 "int8" `1034  "A running seconds counter"
+V G "int_count" 0 56 "int8" `1035  "Number of interrupts left before a second has elapsed"
+F N "clock_isr" 0 60 ""
+F G "clock_isr" 0 60 "void()" `1036  "timer 2 overflows (250->0), which is"
+C L "clock_isr" 0 25 1 "FUNCTION"
+C L "clock_isr" 0 25 1 "FUNCTION"
 C L "RDA_isr" 0 25 1 "FUNCTION"
-F N "RDA_isr" 0 55 ""
-F G "RDA_isr" 0 56 "void()" `1032 
-C L "main" 0 25 12 "FUNCTION"
-F N "main" 0 94 ""
-F G "main" 0 95 "void()" `1033 
+F N "RDA_isr" 0 75 ""
+F G "RDA_isr" 0 76 "void()" `1037 
+F N "EXT2_isr" 0 98 ""
+F G "EXT2_isr" 0 99 "void()" `1038 
+F N "main" 0 105 ""
+F G "main" 0 106 "void()" `1039 
 C L "main" 0 25 1 "FUNCTION"
 C L "main" 0 25 1 "FUNCTION"
 C L "main" 0 25 1 "FUNCTION"
 C L "main" 0 25 6 "FUNCTION"
-C L "main" 0 25 1 "FUNCTION"
+V L "i" 0 147 "int8" `1042 
 C L "main" 0 25 2 "FUNCTION"
 C L "main" 0 25 1 "FUNCTION"
+C L "main" 0 25 2 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1
@@ -2871,7 +2884,7 @@ F B "memcpy" 3 0
 F B "strstr100" 2 0
 F B "Output_high" 1 0
 F B "Output_low" 1 0
-F B "Input" 1 0
+F B "input" 1 0
 F B "input_state" 1 0
 F B "output_float" 1 0
 F B "output_drive" 1 0

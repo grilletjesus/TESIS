@@ -38,148 +38,159 @@
 02C-0AB GPSData
 0AC     GPSDataPtr
 0AD     c
-0AE     GPSDataReady
-0AF     GPSmsgCount
-0B0-0EC TX_DATA
-0ED-0EE @sprintf_string
-0EF     send.toAddress
-0EF     initialize.nodeID
-0EF     GPS_Pack.i
-0EF     main.@SCRATCH1
-0EF     @PSTRINGR_1038.@SCRATCH1
-0F0-0F3 initialize.start
-0F0     @delay_ms1.P1
-0F0-0F1 send.buffer
-0F0     GPS_Pack.@SCRATCH1
-0F0     @PSTRINGR_1038.@SCRATCH2
-0F1     @SPRINTF.P1
-0F1     GPS_Pack.@SCRATCH2
-0F2     send.bufferSize
-0F2     GPS_Pack.@SCRATCH3
-0F3     send.requestACK
-0F4     initialize.timeout
-0F4-0F7 send.now
-0F5     initialize.i
-0F6     initialize.@SCRATCH1
-0F7     setHighPower.onOff
-0F7     initialize.@SCRATCH2
-0F8     readRSSI.forceTrigger
-0F8     sendFrame.toAddress
-0F8     initialize.@SCRATCH3
-0F8     canSend.@SCRATCH1
-0F8     send.@SCRATCH1
-0F8     setHighPower.@SCRATCH1
-0F9-0FA sendFrame.buffer
-0F9-0FA readRSSI.rssi
-0F9     initialize.@SCRATCH4
-0F9     canSend.@SCRATCH2
-0F9     send.@SCRATCH2
-0FA     initialize.@SCRATCH5
-0FA     send.@SCRATCH3
-0FB     sendFrame.bufferSize
-0FB     send.@SCRATCH4
-0FB     readRSSI.@SCRATCH1
-0FC     sendFrame.requestACK
-0FD     sendFrame.sendACK
-0FE     sendFrame.CTLbyte
-0FF     sendFrame.i
-100-103 sendFrame.txStart
-104     setMode.newMode
-104     sendFrame.@SCRATCH1
-105     readReg.addr
-105     setHighPowerRegs.onOff
-105     setMode.@SCRATCH1
-105     sendFrame.@SCRATCH2
-106     readReg.regval
-106     sendFrame.@SCRATCH3
-106     setHighPowerRegs.@SCRATCH1
-107     writeReg.addr
-107     SPIRead8bit.RdPara
-107     sendFrame.@SCRATCH4
-107     readReg.@SCRATCH1
-108     SPIRead8bit.bitcnt
-108     writeReg.value
-108     sendFrame.@SCRATCH5
-109     writeReg.@SCRATCH1
-10A     SPItransfer.WrPara
-10B     SPItransfer.Data_In
-10C     SPItransfer.bitcnt
-10D-10E StrFnd.s
-10D     RDA_isr.@SCRATCH1
-10E     RDA_isr.@SCRATCH2
-10F     StrFnd.c
-110-111 StrFnd.st
-112     StrFnd.l
-113     StrFnd.@SCRATCH1
+0AE     cont
+0AF     cn
+0B0     GPSDataReady
+0B1     GPSmsgCount
+0B2-0EE TX_DATA
+0EF     seconds
+0F0     int_count
+0F1-0F2 @sprintf_string
+0F3     main.i
+0F4     send.toAddress
+0F4     initialize.nodeID
+0F4     GPS_Pack.i
+0F4     main.@SCRATCH1
+0F4     @PSTRINGR_1045.@SCRATCH1
+0F4     @PSTRINGC_1045.@SCRATCH1
+0F5-0F6 send.buffer
+0F5-0F8 initialize.start
+0F5     @delay_ms1.P1
+0F5     GPS_Pack.@SCRATCH1
+0F5     @PSTRINGR_1045.@SCRATCH2
+0F5     @PSTRINGC_1045.@SCRATCH2
+0F6     @SPRINTF.P1
+0F6     GPS_Pack.@SCRATCH2
+0F7     send.bufferSize
+0F7     GPS_Pack.@SCRATCH3
+0F8     send.requestACK
+0F9     initialize.timeout
+0F9-0FC send.now
+0FA     initialize.i
+0FB     initialize.@SCRATCH1
+0FC     setHighPower.onOff
+0FC     initialize.@SCRATCH2
+0FD     sendFrame.toAddress
+0FD     readRSSI.forceTrigger
+0FD     initialize.@SCRATCH3
+0FD     canSend.@SCRATCH1
+0FD     send.@SCRATCH1
+0FD     setHighPower.@SCRATCH1
+0FE-0FF sendFrame.buffer
+0FE-0FF readRSSI.rssi
+0FE     initialize.@SCRATCH4
+0FE     canSend.@SCRATCH2
+0FE     send.@SCRATCH2
+0FF     initialize.@SCRATCH5
+0FF     send.@SCRATCH3
+100     sendFrame.bufferSize
+100     send.@SCRATCH4
+100     readRSSI.@SCRATCH1
+101     sendFrame.requestACK
+102     sendFrame.sendACK
+103     sendFrame.CTLbyte
+104     sendFrame.i
+105-108 sendFrame.txStart
+109     sendFrame.@SCRATCH1
+10A     sendFrame.@SCRATCH2
+10B     sendFrame.@SCRATCH3
+10C     setMode.newMode
+10C     sendFrame.@SCRATCH4
+10D     setHighPowerRegs.onOff
+10D     readReg.addr
+10D     setMode.@SCRATCH1
+10D     sendFrame.@SCRATCH5
+10E     readReg.regval
+10E     setHighPowerRegs.@SCRATCH1
+10F     SPIRead8bit.RdPara
+10F     writeReg.addr
+10F     readReg.@SCRATCH1
+110     SPIRead8bit.bitcnt
+110     writeReg.value
+111     writeReg.@SCRATCH1
+112     SPItransfer.WrPara
+113     SPItransfer.Data_In
+114     SPItransfer.bitcnt
+115-116 StrFnd.s
+115     RDA_isr.@SCRATCH1
+116     RDA_isr.@SCRATCH2
+117     StrFnd.c
+118-119 StrFnd.st
+11A     StrFnd.l
+11B     StrFnd.@SCRATCH1
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
-FBB     CCP_2
 FBB     CCP_2_LOW
+FBB     CCP_2
 FBC     CCP_2_HIGH
 FBE     CCP_1
 FBE     CCP_1_LOW
 FBF     CCP_1_HIGH
-FE1-FE2 @WRITE_PACKED_MEMORY.P1
-FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PACKED_MEMORY.P1
-FE9-FEA @WRITE_PROGRAM_MEMORY.P2
-FE9-FEA @READ_PACKED_MEMORY.P3
-FE9-FEA @READ_PROGRAM_MEMORY.P4
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
 FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 000004  millis
-0000BA  CONFIG.call
-0000CA  CONFIG.data
-0000FA  @TIMERISR_1
-000110  @GETCH_BIU_1
-000128  StrFnd
-000174  RDA_isr
-0001EA  @GET_TICKS_1
-00022A  select
-000230  SPItransfer
-000278  unselect
-00027E  writeReg
-000298  SPIRead8bit
-0002D2  readReg
-0002F4  setHighPower
-000352  setHighPowerRegs
-000388  setMode
-000492  initialize
-00065C  @delay_ms1
-000682  GPS_Pack
-0006C2  @SPRINTF
-0006E0  @PSTRINGR_1038
-000706  readRSSI
-000752  canSend
-00078C  sendFrame
-0008B6  send
-000944  @cinit1
-000944  main
-0009AC  @cinit2
+0000D2  CONFIG.call
+0000E2  CONFIG.data
+000116  @TIMERISR_1
+00012C  clock_isr
+00014A  @GETCH_BIU_1
+000162  StrFnd
+0001AE  RDA_isr
+000224  EXT2_isr
+000236  @const1049.call
+00024A  @GET_TICKS_1
+00028A  select
+000290  SPItransfer
+0002D8  unselect
+0002DE  writeReg
+0002F8  SPIRead8bit
+000332  readReg
+000354  setHighPower
+0003B2  setHighPowerRegs
+0003E8  setMode
+0004F2  initialize
+0006BC  @delay_ms1
+0006E2  GPS_Pack
+000722  @SPRINTF
+00073E  @PSTRINGR_1045
+000764  readRSSI
+0007B0  canSend
+0007EA  sendFrame
+000920  send
+0009BA  @PSTRINGC_1045
+0009DC  @cinit1
+0009DC  main
+000A44  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
 Project Directory:
-    C:\Users\Jesus\Desktop\TESIS\Funciona\Transmisor + gps\
+    C:\Users\Jesus\Documents\GitHub\TESIS\Funciona\Transmisor + gps\
 
 Project Files:
-    rmf69.c                                                 [13-may.-17 15:29  CRC=DBC8D5C0]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h [18-may.-16 15:14  CRC=7C29061C]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h [27-mar.-16 19:10  CRC=59769663]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h [05-sept.-14 12:47  CRC=897CEC6C]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
-    ..\..\..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
+    rmf69.c                                                 [05-jun.-17 16:19  CRC=9DF0FC41]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h [18-may.-16 15:14  CRC=7C29061C]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h [27-mar.-16 19:10  CRC=59769663]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h [05-sept.-14 12:47  CRC=897CEC6C]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\drivers\string.h [26-mar.-15 13:34  CRC=C4814297]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h [03-ene.-08 15:55  CRC=2D1F019F]
     GPS.c                                                   [09-oct.-16 20:44  CRC=CA1070FB]
-    RFM69.h                                                 [12-may.-17 14:45  CRC=434F846C]
+    RFM69.h                                                 [05-jun.-17 16:23  CRC=5F32509E]
     RFM69registers.h                                        [27-abr.-17 14:42  CRC=7ED51585]
 
-Source signature=378FC352
+Source signature=159AB605
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=1594
+Hex file CRC=6694
 
 Units:
     rmf69 (main)

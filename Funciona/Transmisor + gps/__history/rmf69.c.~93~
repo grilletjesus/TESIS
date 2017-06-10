@@ -50,7 +50,7 @@ void GPS_Pack()
 }
 
 
-#define INTS_PER_SECOND 1//0       // 10 = 21sec; 
+#define INTS_PER_SECOND 10       // 10 = 21sec; 
 
 int8 seconds;      // A running seconds counter
 int8 int_count;    // Number of interrupts left before a second has elapsed

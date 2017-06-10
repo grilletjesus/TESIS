@@ -50,7 +50,7 @@ void GPS_Pack()
 }
 
 
-#define INTS_PER_SECOND 1//0       // 10 = 21sec; 
+#define INTS_PER_SECOND 125        // (20000000/(4*16*250*10))
 
 int8 seconds;      // A running seconds counter
 int8 int_count;    // Number of interrupts left before a second has elapsed
@@ -131,7 +131,6 @@ set_tris_D(0b00010000);
    setup_timer_2(T2_DIV_BY_16, 250, 10);
    set_timer2(0);
    enable_interrupts(INT_TIMER2);
-   int_count = INTS_PER_SECOND;
    
    cn = 0;
    Output_high(GPSPower);
@@ -144,10 +143,7 @@ set_tris_D(0b00010000);
 // --------------------------------------------------------------
 while(true)
    {
-      for(int i=0;i<61;i++)
-      {
-         sprintf(TX_DATA,"\0");
-      }
+      sprintf(TX_DATA,"\0");
       while(cn == 0){
       if (GPSDataReady)
       { 
@@ -171,7 +167,7 @@ while(true)
        
       }
    
-       sprintf(TX_DATA, "ERROR,desconectado");
+      sprintf(TX_DATA, "ERROR,desconectado");
        send(0x01, TX_DATA, 61, 0);
        delay_ms(100);
        if (input(PIN_B1) == 1)

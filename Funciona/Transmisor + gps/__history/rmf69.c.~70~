@@ -25,21 +25,23 @@
 //Variables---------------
 //GPS--
 char GPSData[128];
+char ERROR[61] = {'ERROR,collardesconectado'};
 unsigned int8 GPSDataPtr=0; 
-char c;
-char cont;
-int  cn;
+char c; 
 int8 GPSDataReady = FALSE; 
 int8 GPSmsgCount = 0; 
 //RMF69--
 byte TX_DATA[61];
 //AUX---
 //static unsigned int32 Cont = 0;
-//short GPS_Status = 1;
+short conectado = 1;
+int count = 0;
 //int tmr0 = 0;
 
 //--------------------------------------
 //Funciones
+
+
 
 void GPS_Pack()
 {
@@ -47,26 +49,6 @@ void GPS_Pack()
    {
       GPSData[i]=GPSData[i+7];
    }
-}
-
-
-#define INTS_PER_SECOND 1//0       // 10 = 21sec; 
-
-int8 seconds;      // A running seconds counter
-int8 int_count;    // Number of interrupts left before a second has elapsed
-
-
-#INT_TIMER2                        // This function is called every time
-void clock_isr() {                 // timer 2 overflows (250->0), which is
-                                   // approximately 125 times per second for
-    if(--int_count==0) {           // this program.
-      if(++seconds==21)
-      {
-         seconds = 0;
-         Output_high(GPSPower);
-      }
-      int_count = INTS_PER_SECOND;
-    }
 }
 
 //------------------------
@@ -94,19 +76,35 @@ void RDA_isr(void)
    GPSData[GPSDataPtr++ & 0x7F] = c; 
 } 
 
-#INT_EXT2
-void EXT2_isr(void)
+#INT_EXT1
+void EXT1_isr()
 {
-   if(cn == 0){
-   cn = 1;
-   cont = '2';}
+   conectado = !conectado;
+   ++count;
 }
+//---------------------------------------
+//INT timer0
+/*#INT_TIMER0
+void T0inter(void)
+{
+
+   if((cont == 1400)        //1seg ~> cont = 12; 1min ~> cont = 700 
+      && (GPS_Status == 0))
+   {
+      Output_high(GPSPower);
+      cont = 0;
+      GPS_Status = 1;
+      break;
+   }
+   else
+      cont++;
+}*/
 
 void main(void)
 { 
 #zero_ram
-
-set_tris_b(0b00000111);     //DIO0
+set_tris_a(0b00000000)
+set_tris_b(0b00000001);     //DIO0
 set_tris_C(0b10000000);     // ser in 0
 set_tris_D(0b00010000);
 
@@ -127,63 +125,51 @@ set_tris_D(0b00010000);
  
 //1seg ~> cont = 12; 1min ~> cont = 700 
 //------------------------------------------------------------ 
-   int_count = INTS_PER_SECOND;
-   setup_timer_2(T2_DIV_BY_16, 250, 10);
-   set_timer2(0);
-   enable_interrupts(INT_TIMER2);
-   int_count = INTS_PER_SECOND;
-   
-   cn = 0;
+   output_low(PIN_A5)
+   ext_int_edge(1,H_TO_L );
    Output_high(GPSPower);
-   ext_int_edge(2,L_TO_H);
-   enable_interrupts(INT_RDA);
-   enable_interrupts(INT_EXT2);
    enable_interrupts(GLOBAL);
+   enable_interrupts(INT_RDA);
+   enable_interrupts(INT_EXT1);
+
    
 
 // --------------------------------------------------------------
 while(true)
    {
-      for(int i=0;i<61;i++)
+      while (conectado)
       {
-         sprintf(TX_DATA,"\0");
-      }
-      while(cn == 0){
-      if (GPSDataReady)
-      { 
-         //GPRMC_decode(GPSData, &MyGPRMCInfo);
-         //if (MyGPRMCInfo.Valid == 'A') 
-         //{ 
-            GPS_Pack();
-            sprintf(TX_DATA, "%s", GPSData);
-           // for (int i = 0; i < 2; i ++)
-            //{
-               send(0x01, TX_DATA, 61, 0);
-               delay_ms(100);
-            //}
-            
-         //}
-         Output_low(GPSPower);
-         //delay_ms(20000);
-         //Output_high(GPSPower);
-         GPSDataReady = FALSE; 
-      }  
-       
-      }
-   
-       sprintf(TX_DATA, "ERROR,desconectado");
-       send(0x01, TX_DATA, 61, 0);
-       delay_ms(100);
-       if (input(PIN_B1) == 1)
-       {
-         cn = 0;
-       }
-  }
-   // End While Loop
-}         // End Main 
+      
+         if (GPSDataReady)
+         { 
 
+               GPS_Pack();
+               sprintf(TX_DATA, "%s", GPSData);
+              // for (int i = 0; i < 2; i ++)
+               //{
+                  send(0x01, TX_DATA, 61, 0);
+                  delay_ms(100);
+               //}
+               
+            //}
+            Output_low(GPSPower);
+            delay_ms(20000);
+            Output_high(GPSPower);
+            GPSDataReady = FALSE; 
+         }
+      } 
+         
+      
+      sprintf(TX_DATA, "%s", ERROR);
+      send(0x01, TX_DATA, 61, 0);
+      delay_ms(2000);
+   }
+}
 
 /*****************************************************************************/
+
+
+
 
 
 
